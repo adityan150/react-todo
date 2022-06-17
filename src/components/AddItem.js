@@ -8,7 +8,6 @@ function AddItem(props) {
   const inputValueHandler = (event) => {
     setTitle(event.target.value);
     setValidity(true);
-    console.log("input value handler");
   };
 
   const submitFormHandler = (event) => {

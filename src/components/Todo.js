@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AddItem from "./AddItem";
 import TodoList from "./TodoList";
 
@@ -26,14 +26,16 @@ function Todo() {
   }
   const [data, setData] = useState(initialData);
 
-  const addItemHandler = (inputData) => {
-    setData(() => [...data, inputData]);
+  useEffect(() => {
     localStorage.setItem("listData", JSON.stringify(data));
+  }, [data]);
+
+  const addItemHandler = (inputData) => {
+    setData([...data, inputData]);
   };
 
   const removeItemHandler = (idToRemove) => {
-    setData(() => data.filter((item) => item.id !== idToRemove));
-    localStorage.setItem("listData", JSON.stringify(data));
+    setData(data.filter((item) => item.id !== idToRemove));
   };
 
   return (
@@ -46,6 +48,3 @@ function Todo() {
 }
 
 export default Todo;
-
-// check error checking using use effect
-// use database
