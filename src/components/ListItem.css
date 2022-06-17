@@ -1,0 +1,31 @@
+.list-item {
+  width: 80%;
+  margin: auto;
+  margin-top: 1rem;
+  padding: 0.3rem 0.5rem 0.4rem 2.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #fff;
+  border: none;
+  border-radius: 0.2rem;
+  letter-spacing: 1.5px;
+}
+
+.list-item button {
+  border: none;
+  border-radius: 0.1rem;
+  background-color: #fef7dc;
+}
+
+@media (min-width: 850px) and (max-width: 1000px) {
+  .list-item {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1000px) {
+  .list-item {
+    width: 350px;
+  }
+}
