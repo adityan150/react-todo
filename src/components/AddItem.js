@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { addData } from "../controller/firebase";
 import "./AddItem.css";
 
 function AddItem(props) {
@@ -11,10 +12,10 @@ function AddItem(props) {
   };
 
   const submitFormHandler = (event) => {
-    setTitle("");
     event.preventDefault();
-    const title = event.target[0].value;
-    if (title.trim().length === 0) {
+    setTitle("");
+    const title = event.target[0].value.trim();
+    if (title.length === 0) {
       setValidity(false);
       setTimeout(() => {
         setValidity(true);
@@ -24,7 +25,7 @@ function AddItem(props) {
         id: Math.random(),
         title: title,
       };
-      props.onFormSubmit(inputData);
+      addData(inputData);
     }
   };
 

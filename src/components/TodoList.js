@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getData, removeData } from "../controller/firebase";
 import ListItem from "./ListItem";
 
 import "./TodoList.css";
 function TodoList(props) {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    getData(setData);
+  }, []);
+
+  const removeItemHandler = async (targetId) => {
+    removeData(targetId);
+  };
+
   return (
     <ol className="todo-list">
-      {props.list.length === 0 && <h2>No tasks in hand!</h2>}
-      {props.list.map((item) => (
+      {data.length === 0 && <h2>No tasks in hand!</h2>}
+      {data.map((item) => (
         <ListItem
           title={item.title}
           id={item.id}
           key={item.id}
-          deleteItem={props.deleteItem}
+          removeItem={removeItemHandler}
         />
       ))}
     </ol>
